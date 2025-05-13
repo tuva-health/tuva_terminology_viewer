@@ -8,7 +8,7 @@ export default function CSVViewer() {
   const [headers, setHeaders] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [currentUrl, setCurrentUrl] = useState('https://tuva-public-resources.s3.amazonaws.com/versioned_terminology/0.14.9/admit_source.csv_0_0_0.csv.gz');
+  const [currentUrl, setCurrentUrl] = useState('https://tuva-public-resources.s3.amazonaws.com/versioned_terminology/0.14.11/admit_source.csv_0_0_0.csv.gz');
   const [terminologyFiles, setTerminologyFiles] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterTerm, setFilterTerm] = useState('');
@@ -16,7 +16,7 @@ export default function CSVViewer() {
   const [currentPage, setCurrentPage] = useState(1);
   const [isPartialData, setIsPartialData] = useState(false);
   const [totalRowsEstimate, setTotalRowsEstimate] = useState(0);
-  const [terminologyVersion, setTerminologyVersion] = useState('0.14.9');
+  const [terminologyVersion, setTerminologyVersion] = useState('0.14.11');
   
   const baseDomain = 'https://tuva-public-resources.s3.amazonaws.com';
   const default_folder = 'versioned_terminology';
@@ -308,6 +308,27 @@ export default function CSVViewer() {
             }}
           >
             0.14.9
+          </button>
+          <button
+            onClick={() => {
+              setTerminologyVersion('0.14.11');
+              // Update the current URL with the new version
+              const fileName = getCurrentFileName();
+              const baseUrl = getBaseUrl(fileName);
+              setCurrentUrl(`${baseUrl}${fileName}`);
+            }}
+            style={{
+              padding: '6px 12px',
+              borderRadius: '6px',
+              border: 'none',
+              backgroundColor: terminologyVersion === '0.14.11' ? '#3b82f6' : 'transparent',
+              color: terminologyVersion === '0.14.11' ? 'white' : '#6b7280',
+              fontSize: '14px',
+              fontWeight: 500,
+              cursor: 'pointer'
+            }}
+          >
+            0.14.11
           </button>
         </div>
       </div>
